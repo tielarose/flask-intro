@@ -48,6 +48,16 @@ def say_hello():
           </select> 
           <input type="submit" value="Submit">
         </form>
+        <form action="/diss">
+          What's your name? <input type="text" name="person">
+          <label for="diss">Choose Your Diss:</label>
+          <select name="diss">
+            <option value="mean"> Mean </option>
+            <option value="terrible"> Terrible </option>
+            <option value="horrible"> Horrible </option>
+          </select> 
+          <input type="submit" value="Submit">
+        </form>
       </body>
     </html>
     """
@@ -69,6 +79,26 @@ def greet_person():
       </head>
       <body>
         Hi, {player}! I think you're {compliment}!
+      </body>
+    </html>
+    """
+
+
+@app.route('/diss')
+def diss_person():
+    """Get user by name."""
+
+    player = request.args.get("person")
+    diss = request.args.get("diss")
+
+    return f"""
+    <!doctype html>
+    <html>
+      <head>
+        <title>Diss</title>
+      </head>
+      <body>
+        Hi, {player}! I think you're {diss}!
       </body>
     </html>
     """
